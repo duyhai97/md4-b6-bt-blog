@@ -1,13 +1,19 @@
 package repository;
 
 import model.Blog;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Scope(proxyMode = ScopedProxyMode.INTERFACES)
+@Transactional
 public class BlogRepository implements IBlogRepository{
 
     @PersistenceContext
@@ -32,11 +38,11 @@ public class BlogRepository implements IBlogRepository{
 
     @Override
     public void save(Blog blog) {
-        if (blog.getId() != null) {
+        if(blog.getId() != null){
             em.merge(blog);
-        } else {
-            em.persist(blog);
         }
+        else em.persist(blog);
+        
     }
 
     @Override

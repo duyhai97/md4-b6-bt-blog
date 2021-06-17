@@ -3,7 +3,7 @@ package model;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "Blogs")
 public class Blog {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Blog {
 
     @Override
     public String toString() {
-        return String.format("Customer[id=%d, firstName='%s', lastName='%s']", id, name, content);
+        return String.format("Blog[id=%d, name='%s', content='%s']", id, name, content);
     }
 
     public Long getId() {
