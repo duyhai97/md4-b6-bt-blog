@@ -1,5 +1,6 @@
 package config;
 
+import formatter.CategoryFormatter;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -7,6 +8,9 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -20,10 +24,10 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
-import repository.BlogRepository;
-import repository.IBlogRepository;
-import service.BlogService;
-import service.IBlogService;
+import service.blog.BlogService;
+import service.blog.IBlogService;
+import service.category.CategoryService;
+import service.category.ICategoryService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -34,6 +38,8 @@ import java.util.Properties;
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan("controller")
+@EnableJpaRepositories("repository")
+@EnableSpringDataWebSupport
 public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAware {
 
     private ApplicationContext applicationContext;
@@ -114,12 +120,20 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     }
 
     @Bean
-    public IBlogRepository blogRepository() {
-        return new BlogRepository();
-    }
-
-    @Bean
-    public IBlogService blogService() {
+    public IBlogService blogService(){
         return new BlogService();
     }
+    @Bean
+    public ICategoryService categoryService() {
+        return new CategoryService();
+    }
+
+
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addFormatter
+                (new CategoryFormatter(applicationContext.getBean(CategoryService.class)));
+    }
+
 }

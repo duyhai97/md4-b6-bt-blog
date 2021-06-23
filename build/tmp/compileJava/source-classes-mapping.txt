@@ -1,20 +1,28 @@
-repository/IBlogRepository.java
- repository.IBlogRepository
-repository/IGeneralRepository.java
- repository.IGeneralRepository
-service/IGeneralService.java
- service.IGeneralService
-config/AppInit.java
- config.AppInit
-service/IBlogService.java
- service.IBlogService
 config/AppConfiguration.java
  config.AppConfiguration
-repository/BlogRepository.java
- repository.BlogRepository
-service/BlogService.java
- service.BlogService
+service/blog/IBlogService.java
+ service.blog.IBlogService
+service/category/CategoryService.java
+ service.category.CategoryService
+formatter/CategoryFormatter.java
+ formatter.CategoryFormatter
+service/blog/BlogService.java
+ service.blog.BlogService
+repository/category/ICategoryRepository.java
+ repository.category.ICategoryRepository
+repository/blog/IBlogRepository.java
+ repository.blog.IBlogRepository
+service/category/ICategoryService.java
+ service.category.ICategoryService
 model/Blog.java
  model.Blog
+config/AppInit.java
+ config.AppInit
+model/Category.java
+ model.Category
 controller/BlogController.java
  controller.BlogController
+controller/BlogControllerRestFull.java
+ controller.BlogControllerRestFull
+controller/CategoryController.java
+ controller.CategoryController

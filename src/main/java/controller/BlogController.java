@@ -1,12 +1,16 @@
 package controller;
 
 import model.Blog;
+import model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import service.IBlogService;
+import service.blog.IBlogService;
+import service.category.ICategoryService;
 
 import java.util.List;
 
@@ -16,6 +20,14 @@ public class BlogController {
 
     @Autowired
     private IBlogService blogService;
+
+    @Autowired
+    private ICategoryService categoryService;
+
+    @ModelAttribute("categories")
+    public List<Category> categories(){
+        return categoryService.findAll();
+    }
 
     @GetMapping("")
     public ModelAndView showListBlog(){
@@ -76,5 +88,8 @@ public class BlogController {
         modelAndView.addObject("blog", blogService.findById(id));
         return modelAndView;
     }
+
+
+
     
 }
