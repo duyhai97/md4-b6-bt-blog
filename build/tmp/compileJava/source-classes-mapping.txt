@@ -1,5 +1,5 @@
-config/AppConfiguration.java
- config.AppConfiguration
+controller/BlogControllerRestFull.java
+ controller.BlogControllerRestFull
 service/blog/IBlogService.java
  service.blog.IBlogService
 service/category/CategoryService.java
@@ -16,13 +16,13 @@ service/category/ICategoryService.java
  service.category.ICategoryService
 model/Blog.java
  model.Blog
-config/AppInit.java
- config.AppInit
-model/Category.java
- model.Category
 controller/BlogController.java
  controller.BlogController
-controller/BlogControllerRestFull.java
- controller.BlogControllerRestFull
+model/Category.java
+ model.Category
+config/AppInit.java
+ config.AppInit
+config/AppConfiguration.java
+ config.AppConfiguration
 controller/CategoryController.java
  controller.CategoryController

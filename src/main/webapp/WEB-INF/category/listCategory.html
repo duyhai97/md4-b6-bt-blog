@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<form>
+<input name="name" id="name">
+<button type="submit" onclick="addCategories()">AddNew</button>
+</form>
+
+<table>
+    <tr>
+        <td>#</td>
+        <td>name</td>
+        <td>action</td>
+    </tr>
+    <tbody id="content">
+
+    <th:block th:each="c:${categoryList}">
+        <tr>
+            <td th:text="${c.id}"></td>
+            <td th:text="${c.name}"></td>
+            <td>
+                <a class="deleteCategories" th:href="${c.getId()}">Xoa</a>
+            </td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+
+<script type="text/javascript">
+
+    function addCategories() {
+        //lay du lieu
+        let name = $('#name').val();
+        let newCategories = {
+            name: name
+        };
+        // goi ajax
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "POST",
+            data: JSON.stringify(newCategories),
+            //tên API
+            url: "/categories",
+            //xử lý khi thành công
+            success: successHandler
+
+        });
+        //chặn sự kiện mặc định của thẻ
+        event.preventDefault();
+    }
+
+    function successHandler(){
+        $.ajax({
+            type:"GET",
+            url: "/categories",
+            success: function (taothich){
+                let c = "";
+                for (let i = 0; i < taothich.length; i++) {
+                    c+= `<tr><td>${taothich[i].id}</td>   <td>${taothich[i].name}</td>
+                <td><a class="deleteCategories" href="${taothich[i].id}">Xoa</a></td>
+                </tr>`
+                }
+                document.getElementById("content").innerHTML = c;
+            }
+        })
+    }
+
+    $(document).on("click",".deleteCategories",function (event) {
+        //lay du lieu
+        let a = $(this);
+        let id = a.attr("href");
+        // goi ajax
+        $.ajax({
+            type: "DELETE",
+            //tên API
+            url: `/categories/${id}`,
+            //xử lý khi thành công
+            success: function (data) {
+                a.parent().parent().remove();
+            }
+
+        });
+        //chặn sự kiện mặc định của thẻ
+        event.preventDefault();
+    });
+    event.preventDefault();
+
+    // $(document).ready(function () {
+    //     //sư kiện nào thực hiện Ajax
+    //     $('.deleteCategories').click(function (event) {
+    //         //lay du lieu
+    //         let a = $(this);
+    //         let id = a.attr("href");
+    //         // goi ajax
+    //         $.ajax({
+    //             type: "DELETE",
+    //             //tên API
+    //             url: `/categories/${id}`,
+    //             //xử lý khi thành công
+    //             success: function (data) {
+    //                 a.parent().parent().remove();
+    //             }
+    //
+    //         });
+    //         //chặn sự kiện mặc định của thẻ
+    //         event.preventDefault();
+    //     });
+    // })
+</script>
+
+</body>
+</html>

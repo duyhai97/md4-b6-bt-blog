@@ -7,19 +7,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import service.blog.IBlogService;
 import service.category.ICategoryService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/categories")
 public class CategoryController {
 
     @Autowired
     private ICategoryService categoryService;
 
 
+    @GetMapping("/list")
+    public ModelAndView showList(){
+        ModelAndView modelAndView = new ModelAndView("/category/listCategory",
+                "categoryList", categoryService.findAll());
+        return modelAndView;
+    }
 
 
     @GetMapping()
