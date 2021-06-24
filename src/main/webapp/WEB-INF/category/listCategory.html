@@ -16,6 +16,7 @@
         <td>#</td>
         <td>name</td>
         <td>action</td>
+        <td>action</td>
     </tr>
     <tbody id="content">
 
@@ -25,6 +26,9 @@
             <td th:text="${c.name}"></td>
             <td>
                 <a class="deleteCategories" th:href="${c.getId()}">Xoa</a>
+            </td>
+            <td>
+                <a class="editCategories" th:href="${c.getId()}" onclick="editCategories()">Sua</a>
             </td>
         </tr>
     </th:block>
@@ -57,15 +61,42 @@
         event.preventDefault();
     }
 
+
+    // function editCategories() {
+    //
+    //     //lay du lieu
+    //     let name = $('#name').val();
+    //     let newCategories = {
+    //         name: name
+    //     };
+    //     // goi ajax
+    //     $.ajax({
+    //         headers: {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json'
+    //         },
+    //         type: "POST",
+    //         data: JSON.stringify(newCategories),
+    //         //tên API
+    //         url: "/categories",
+    //         //xử lý khi thành công
+    //         success: successHandler
+    //
+    //     });
+    //     //chặn sự kiện mặc định của thẻ
+    //     event.preventDefault();
+    // }
+
+
     function successHandler(){
         $.ajax({
             type:"GET",
             url: "/categories",
-            success: function (taothich){
+            success: function (aaaa){
                 let c = "";
-                for (let i = 0; i < taothich.length; i++) {
-                    c+= `<tr><td>${taothich[i].id}</td>   <td>${taothich[i].name}</td>
-                <td><a class="deleteCategories" href="${taothich[i].id}">Xoa</a></td>
+                for (let i = 0; i < aaaa.length; i++) {
+                    c+= `<tr><td>${aaaa[i].id}</td>   <td>${aaaa[i].name}</td>
+                <td><a class="deleteCategories" href="${aaaa[i].id}">Xoa</a></td>
                 </tr>`
                 }
                 document.getElementById("content").innerHTML = c;
@@ -91,29 +122,8 @@
         //chặn sự kiện mặc định của thẻ
         event.preventDefault();
     });
-    event.preventDefault();
 
-    // $(document).ready(function () {
-    //     //sư kiện nào thực hiện Ajax
-    //     $('.deleteCategories').click(function (event) {
-    //         //lay du lieu
-    //         let a = $(this);
-    //         let id = a.attr("href");
-    //         // goi ajax
-    //         $.ajax({
-    //             type: "DELETE",
-    //             //tên API
-    //             url: `/categories/${id}`,
-    //             //xử lý khi thành công
-    //             success: function (data) {
-    //                 a.parent().parent().remove();
-    //             }
-    //
-    //         });
-    //         //chặn sự kiện mặc định của thẻ
-    //         event.preventDefault();
-    //     });
-    // })
+
 </script>
 
 </body>
