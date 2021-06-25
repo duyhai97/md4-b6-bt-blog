@@ -28,3 +28,7 @@ controller/CategoryController.java
  controller.CategoryController
 controller/BlogController.java
  controller.BlogController
+model/User.java
+ model.User
+controller/LoginController.java
+ controller.LoginController
