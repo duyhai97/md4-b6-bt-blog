@@ -6,6 +6,9 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
+
+<h1 th:text="${'View count: ' + counter.count}"></h1>
+
 <form>
 <input name="name" id="name">
 <button type="submit" onclick="addCategories()">AddNew</button>

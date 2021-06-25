@@ -32,14 +32,20 @@ public class BlogController {
     @GetMapping("")
     public ModelAndView showListBlog(){
         List<Blog> blogList = this.blogService.findAll();
-        ModelAndView modelAndView = new ModelAndView("/list");
+        ModelAndView modelAndView = new ModelAndView("/blog/listBlog");
         modelAndView.addObject("blogList", blogList);
         return modelAndView;
     }
 
+
+//    @GetMapping()
+//    public ResponseEntity<List<Blog>> listBog(){
+//        return new ResponseEntity<>(blogService.findAll(), HttpStatus.OK);
+//    }
+
     @GetMapping("/create")
     public ModelAndView showFormCreate(){
-        ModelAndView modelAndView = new ModelAndView("/create");
+        ModelAndView modelAndView = new ModelAndView("/blog/create");
         modelAndView.addObject("blog", new Blog());
         return modelAndView;
     }
@@ -54,7 +60,7 @@ public class BlogController {
 
     @GetMapping("/{id}/edit")
     public ModelAndView showFormEdit(@PathVariable long id){
-        ModelAndView modelAndView = new ModelAndView("/edit");
+        ModelAndView modelAndView = new ModelAndView("/blog/edit");
         modelAndView.addObject("blog",blogService.findById(id));
         return modelAndView;
     }
@@ -69,7 +75,7 @@ public class BlogController {
     
     @GetMapping("/{id}/delete")
     public ModelAndView showFormDelete(@PathVariable long id){
-        ModelAndView modelAndView = new ModelAndView("/delete");
+        ModelAndView modelAndView = new ModelAndView("/blog/delete");
         modelAndView.addObject("blog", blogService.findById(id));
         return modelAndView;
     }
@@ -84,7 +90,7 @@ public class BlogController {
     
     @GetMapping("/{id}/view")
     public ModelAndView viewBlog(@PathVariable long id){
-        ModelAndView modelAndView = new ModelAndView("/view");
+        ModelAndView modelAndView = new ModelAndView("/blog/view");
         modelAndView.addObject("blog", blogService.findById(id));
         return modelAndView;
     }

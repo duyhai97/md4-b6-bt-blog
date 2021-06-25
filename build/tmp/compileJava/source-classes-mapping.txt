@@ -1,5 +1,7 @@
 controller/BlogControllerRestFull.java
  controller.BlogControllerRestFull
+config/AppConfiguration.java
+ config.AppConfiguration
 service/blog/IBlogService.java
  service.blog.IBlogService
 service/category/CategoryService.java
@@ -8,21 +10,21 @@ formatter/CategoryFormatter.java
  formatter.CategoryFormatter
 service/blog/BlogService.java
  service.blog.BlogService
-repository/category/ICategoryRepository.java
- repository.category.ICategoryRepository
+model/Counter.java
+ model.Counter
 repository/blog/IBlogRepository.java
  repository.blog.IBlogRepository
 service/category/ICategoryService.java
  service.category.ICategoryService
 model/Blog.java
  model.Blog
-controller/BlogController.java
- controller.BlogController
-model/Category.java
- model.Category
 config/AppInit.java
  config.AppInit
-config/AppConfiguration.java
- config.AppConfiguration
+model/Category.java
+ model.Category
+repository/category/ICategoryRepository.java
+ repository.category.ICategoryRepository
 controller/CategoryController.java
  controller.CategoryController
+controller/BlogController.java
+ controller.BlogController

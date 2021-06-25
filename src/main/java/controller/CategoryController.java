@@ -3,6 +3,7 @@ package controller;
 
 import model.Blog;
 import model.Category;
+import model.Counter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,16 +16,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/categories")
+@SessionAttributes("counter")
 public class CategoryController {
+
+    @ModelAttribute("counter")
+    public Counter setUpCounter() {
+        return new Counter();
+    }
 
     @Autowired
     private ICategoryService categoryService;
 
 
     @GetMapping("/list")
-    public ModelAndView showList(){
+    public ModelAndView showList(@ModelAttribute("counter") Counter counter){
         ModelAndView modelAndView = new ModelAndView("/category/listCategory",
                 "categoryList", categoryService.findAll());
+        counter.increment();
         return modelAndView;
     }
 
@@ -56,6 +64,10 @@ public class CategoryController {
         categoryService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
+// Session,
+
 
 
 
