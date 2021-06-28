@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import service.blog.IBlogService;
 import service.category.ICategoryService;
 
@@ -19,6 +20,15 @@ public class BlogControllerRestFull {
 
     @Autowired
     private ICategoryService categoryService;
+
+
+    @GetMapping("/list")
+    public ModelAndView showListBlog(){
+        List<Blog> blogList = this.blogService.findAll();
+        ModelAndView modelAndView = new ModelAndView("/blog/listBlog");
+        modelAndView.addObject("blogList", blogList);
+        return modelAndView;
+    }
 
     @GetMapping()
     public ResponseEntity<List<Blog>> listBog(){

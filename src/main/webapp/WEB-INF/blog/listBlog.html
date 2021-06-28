@@ -13,6 +13,8 @@
     </a>
 </p>
 
+Language: <a href="?lang=en">English</a> | <a href="?lang=vi">Viet Nam</a>
+
 <div class="notify">
     <div th:if="${success}">
         <span th:text="${success}"></span>
@@ -22,12 +24,12 @@
 <table id = "customers">
     <thead>
     <tr>
-        <th>Name</th>
-        <th>Content</th>
-        <th>Category</th>
-        <th>Edit</th>
-        <th>Delete</th>
-        <th>View</th>
+        <th th:text="#{name}"></th>
+        <th th:text="#{content}"></th>
+        <th th:text="#{category}"></th>
+        <th th:text="#{edit}"></th>
+        <th th:text="#{delete}"></th>
+        <th th:text="#{view}"></th>
     </tr>
     </thead>
     <tbody>
@@ -35,9 +37,9 @@
         <td th:text="${row.getName()}"></td>
         <td th:text="${row.getContent()}"></td>
         <td th:text="${row.getCategory().getName()}"></td>
-        <td><a th:href="@{/blog/{id}/edit(id=${row.getId()})}">edit</a></td>
-        <td><a th:href="@{/blog/{id}/delete(id=${row.getId()})}">delete</a></td>
-        <td><a th:href="@{/blog/{id}/view(id=${row.getId()})}">view</a></td>
+        <td><a th:href="@{/blog/{id}/edit(id=${row.getId()})}" th:text="#{edit}"></a></td>
+        <td><a th:href="@{/blog/{id}/delete(id=${row.getId()})}" th:text="#{delete}"></a></td>
+        <td><a th:href="@{/blog/{id}/view(id=${row.getId()})}" th:text="#{view}"></a></td>
     </tr>
     </tbody>
 </table>

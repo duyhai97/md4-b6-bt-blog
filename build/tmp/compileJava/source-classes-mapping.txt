@@ -1,7 +1,7 @@
+controller/LoginController.java
+ controller.LoginController
 controller/BlogControllerRestFull.java
  controller.BlogControllerRestFull
-config/AppConfiguration.java
- config.AppConfiguration
 service/blog/IBlogService.java
  service.blog.IBlogService
 service/category/CategoryService.java
@@ -18,8 +18,8 @@ service/category/ICategoryService.java
  service.category.ICategoryService
 model/Blog.java
  model.Blog
-config/AppInit.java
- config.AppInit
+model/User.java
+ model.User
 model/Category.java
  model.Category
 repository/category/ICategoryRepository.java
@@ -28,7 +28,7 @@ controller/CategoryController.java
  controller.CategoryController
 controller/BlogController.java
  controller.BlogController
-model/User.java
- model.User
-controller/LoginController.java
- controller.LoginController
+config/AppConfiguration.java
+ config.AppConfiguration
+config/AppInit.java
+ config.AppInit

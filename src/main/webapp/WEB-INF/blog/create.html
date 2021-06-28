@@ -10,17 +10,17 @@
     <table>
         <tr><td><input type="hidden" th:field="*{id}"/></td></tr>
         <tr>
-            <td>Name</td>
+            <td th:text="#{name}"></td>
             <td><input type="text" th:field="*{name}"></td>
         </tr>
 
         <tr>
-            <td>Content</td>
+            <td th:text="#{content}"></td>
             <td><input type="text" th:field="*{content}"></td>
         </tr>
 
         <tr>
-            <td>Category</td>
+            <td th:text="#{category}"></td>
             <td>
                 <select  th:field="*{category}">
                 <th:block th:each="c: ${categories}">
