@@ -126,10 +126,13 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         return properties;
     }
 
+
+
     @Bean
     public IBlogService blogService(){
         return new BlogService();
     }
+
     @Bean
     public ICategoryService categoryService() {
         return new CategoryService();
@@ -137,6 +140,7 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
 
 
 
+    //formatter
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addFormatter

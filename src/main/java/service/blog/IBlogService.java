@@ -14,4 +14,8 @@ public interface IBlogService {
     void save(Blog blog);
 
     void remove(Long id);
+
+    Blog findById1(Long id);
+
+    List<Blog> findAllOrderByNameDesc();
 }

@@ -31,4 +31,14 @@ public class BlogService implements IBlogService{
     public void remove(Long id) {
         repository.delete(id);
     }
+
+    @Override
+    public Blog findById1(Long id) {
+        return repository.findById1(id);
+    }
+
+    @Override
+    public List<Blog> findAllOrderByNameDesc() {
+      return   repository.findAllOrderByNameDesc();
+    }
 }

@@ -28,13 +28,13 @@ public class CategoryController {
     private ICategoryService categoryService;
 
 
-    @GetMapping("/list")
-    public ModelAndView showList(@ModelAttribute("counter") Counter counter){
-        ModelAndView modelAndView = new ModelAndView("/category/listCategory",
-                "categoryList", categoryService.findAll());
-        counter.increment();
-        return modelAndView;
-    }
+//    @GetMapping("/list")
+//    public ModelAndView showList(@ModelAttribute("counter") Counter counter){
+//        ModelAndView modelAndView = new ModelAndView("/category/listCategory",
+//                "categoryList", categoryService.findAll());
+//        counter.increment();
+//        return modelAndView;
+//    }
 
 
     @GetMapping()
@@ -66,7 +66,6 @@ public class CategoryController {
     }
 
 
-// Session,
 
 
 

@@ -31,7 +31,7 @@ public class BlogController {
 
     @GetMapping("")
     public ModelAndView showListBlog(){
-        List<Blog> blogList = this.blogService.findAll();
+        List<Blog> blogList = this.blogService.findAllOrderByNameDesc();
         ModelAndView modelAndView = new ModelAndView("/blog/listBlog");
         modelAndView.addObject("blogList", blogList);
         return modelAndView;
@@ -76,7 +76,7 @@ public class BlogController {
     @GetMapping("/{id}/delete")
     public ModelAndView showFormDelete(@PathVariable long id){
         ModelAndView modelAndView = new ModelAndView("/blog/delete");
-        modelAndView.addObject("blog", blogService.findById(id));
+        modelAndView.addObject("blog", blogService.findById1(id));
         return modelAndView;
     }
     
@@ -91,7 +91,7 @@ public class BlogController {
     @GetMapping("/{id}/view")
     public ModelAndView viewBlog(@PathVariable long id){
         ModelAndView modelAndView = new ModelAndView("/blog/view");
-        modelAndView.addObject("blog", blogService.findById(id));
+        modelAndView.addObject("blog", blogService.findById1(id));
         return modelAndView;
     }
 
